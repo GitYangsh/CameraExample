@@ -108,8 +108,8 @@ public class CameraShutterView extends View {
         mProgressForegroundColor = attributes.getColor(R.styleable.CameraShutterView_progressForegroundColor, Color.rgb(66, 145, 241));
         mProgressBackgroundColor = attributes.getColor(R.styleable.CameraShutterView_progressBackgroundColor, Color.rgb(204, 204, 204));
 
-        mOuterRingWidth = attributes.getDimension(R.styleable.CameraShutterView_outerRingWidth, dp2px(1.5f));
-        mSpaceRingWidth = attributes.getDimension(R.styleable.CameraShutterView_spaceRingWidth, dp2px(3.0f));
+        mOuterRingWidth = attributes.getDimension(R.styleable.CameraShutterView_outerRingWidth, 2);
+        mSpaceRingWidth = attributes.getDimension(R.styleable.CameraShutterView_spaceRingWidth, dp2px(4.0f));
         mProgressWidth = attributes.getDimension(R.styleable.CameraShutterView_spaceRingWidth, dp2px(2.0f));
         mTextSize = attributes.getDimension(R.styleable.CameraShutterView_textSize, sp2px(16.0f));
 
@@ -177,8 +177,7 @@ public class CameraShutterView extends View {
             }
         });
 
-        mAnimTakeVideoEnd = ValueAnimator.ofFloat(1.0f, 0.0f).setDuration(100);
-        mAnimTakeVideoEnd.setInterpolator(new AccelerateInterpolator());
+        mAnimTakeVideoEnd = ValueAnimator.ofFloat(1.0f, 0.0f).setDuration(200);
         mAnimTakeVideoEnd.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

@@ -17,11 +17,11 @@ public class CameraApplication extends Application{
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        } else {
-            Timber.plant(new CrashReportingTree());
-        }
+//        if (BuildConfig.DEBUG) {
+//            Timber.plant(new Timber.DebugTree());
+//        } else {
+//            Timber.plant(new CrashReportingTree());
+//        }
     }
 
     /** A tree which logs important information for crash reporting. */

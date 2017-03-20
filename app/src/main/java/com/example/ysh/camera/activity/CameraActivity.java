@@ -3,6 +3,7 @@ package com.example.ysh.camera.activity;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.ysh.camera.R;
@@ -32,6 +33,7 @@ public class CameraActivity extends BaseActivity implements CameraShutterView.on
     };
 
     private CameraShutterView mShutterView;
+    private LinearLayout mAddPartLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +63,8 @@ public class CameraActivity extends BaseActivity implements CameraShutterView.on
         mShutterView = (CameraShutterView) findViewById(R.id.camera_shutter);
         mShutterView.setShutterType(CameraShutterView.TYPE_TAKE_VIDEO);
         mShutterView.setListener(this);
+
+        mAddPartLayout = (LinearLayout) findViewById(R.id.add_part_layout);
     }
 
     @Override
