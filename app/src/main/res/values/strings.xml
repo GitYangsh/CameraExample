@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CameraExample</string>
+    <string name="activity_camera">Camera</string>
+    <string name="activity_camera2">Camera2</string>
 </resources>
