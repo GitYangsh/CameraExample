@@ -3,6 +3,7 @@ package com.example.ysh.camera.activity;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by ysh on 2017/3/16.
  */
 
-public class CameraActivity extends BaseActivity implements CameraShutterView.onShutterListener{
+public class CameraActivity extends BaseActivity implements View.OnClickListener, CameraShutterView.onShutterListener{
 
     private static final String[] PERMISSIONS_ALL = {
             Manifest.permission.CAMERA,
@@ -65,6 +66,29 @@ public class CameraActivity extends BaseActivity implements CameraShutterView.on
         mShutterView.setListener(this);
 
         mAddPartLayout = (LinearLayout) findViewById(R.id.add_part_layout);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (R.id.camera_shutter) {
+            case R.id.camera_shutter:
+                requestPermissions(PERMISSIONS_ALL, new PermissionListener() {
+                    @Override
+                    public void onGranted() {
+                        Toast.makeText(CameraActivity.this, "permission granted", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onDenied(List<String> deniedList) {
+                        StringBuilder sb = new StringBuilder("permission denied:\n");
+                        for (String s : deniedList) {
+                            sb.append(s + "\n");
+                        }
+                        Toast.makeText(CameraActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
+        }
     }
 
     @Override
