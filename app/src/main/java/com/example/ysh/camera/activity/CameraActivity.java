@@ -2,21 +2,21 @@ package com.example.ysh.camera.activity;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.ysh.camera.R;
 import com.example.ysh.camera.view.CameraShutterView;
-
-import java.util.List;
 
 /**
  * Created by ysh on 2017/3/16.
  */
 
-public class CameraActivity extends BaseActivity implements View.OnClickListener, CameraShutterView.onShutterListener{
+public class CameraActivity extends AppCompatActivity implements View.OnClickListener, CameraShutterView.onShutterListener{
 
     private static final String[] PERMISSIONS_ALL = {
             Manifest.permission.CAMERA,
@@ -43,21 +43,22 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
 
         initView();
 
-        requestPermissions(PERMISSIONS_ALL, new PermissionListener() {
-            @Override
-            public void onGranted() {
-                Toast.makeText(CameraActivity.this, "permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onDenied(List<String> deniedList) {
-                StringBuilder sb = new StringBuilder("permission denied:\n");
-                for (String s : deniedList) {
-                    sb.append(s + "\n");
-                }
-                Toast.makeText(CameraActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        requestPermissions(PERMISSIONS_ALL, new PermissionListener() {
+//            @Override
+//            public void onGranted() {
+//                Toast.makeText(CameraActivity.this, "permission granted", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onDenied(List<String> deniedList) {
+//                StringBuilder sb = new StringBuilder("permission denied:\n");
+//                for (String s : deniedList) {
+//                    sb.append(s + "\n");
+//                }
+//                Toast.makeText(CameraActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        ActivityCompat.requestPermissions(this, PERMISSIONS_ALL, 0);
     }
 
     private void initView() {
@@ -70,23 +71,22 @@ public class CameraActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch (R.id.camera_shutter) {
-            case R.id.camera_shutter:
-                requestPermissions(PERMISSIONS_ALL, new PermissionListener() {
-                    @Override
-                    public void onGranted() {
-                        Toast.makeText(CameraActivity.this, "permission granted", Toast.LENGTH_SHORT).show();
-                    }
+        switch (v.getId()) {
 
-                    @Override
-                    public void onDenied(List<String> deniedList) {
-                        StringBuilder sb = new StringBuilder("permission denied:\n");
-                        for (String s : deniedList) {
-                            sb.append(s + "\n");
-                        }
-                        Toast.makeText(CameraActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case CameraShutterView.TYPE_TAKE_PICTURE:
+                break;
+            case CameraShutterView.TYPE_TAKE_VIDEO:
                 break;
         }
     }
