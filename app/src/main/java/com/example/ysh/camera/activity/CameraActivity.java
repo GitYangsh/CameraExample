@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.example.ysh.camera.R;
 import com.example.ysh.camera.view.CameraShutterView;
 
+
 /**
  * Created by ysh on 2017/3/16.
  */
@@ -40,7 +41,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-
         initView();
 
 //        requestPermissions(PERMISSIONS_ALL, new PermissionListener() {
@@ -59,6 +59,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 //            }
 //        });
         ActivityCompat.requestPermissions(this, PERMISSIONS_ALL, 0);
+
     }
 
     private void initView() {
@@ -104,5 +105,10 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onFinishRecording() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

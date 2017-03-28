@@ -51,7 +51,6 @@
         android:layout_height="40dp"
         android:background="@drawable/circle_selector"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/camera_shutter"
         app:layout_constraintTop_toBottomOf="@+id/add_part_layout"
